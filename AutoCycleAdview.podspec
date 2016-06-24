@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/CNKCQ/AutoCycleAdview.git"
-  s.screenshots  = "http://7xslr9.com1.z0.glb.clouddn.com/2016-6-24-AutoCycleAdviewAutoCycleAdview.gif"
+  s.screenshots  = "http://7xslr9.com1.z0.glb.clouddn.com/AutoCycleAdview.gif"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
