@@ -43,7 +43,6 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         scrollView.pagingEnabled = true
         scrollView.contentOffset = CGPoint(x: bounds.width, y: 0)
         scrollView.contentSize = CGSize(width: bounds.width * 3, height: 0)
-        print(scrollView.contentSize)
         scrollView.showsHorizontalScrollIndicator = false
         leftImageView = imageView(CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
         centerImageView = imageView(CGRect(x: bounds.width, y: 0, width: bounds.width, height: bounds.height))

@@ -26,10 +26,8 @@ class ViewController: UIViewController {
             print(imageUrls[idx])
             self.showImage!.kf_setImageWithURL(NSURL(string: imageUrls[idx])!)
         }
-        
         edgesForExtendedLayout = .None
         view.addSubview(sycleScroll)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
