@@ -36,7 +36,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
     var tapResponse: ResponseClouser?
 
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView(frame: bounds)
         scrollView.bounces = false
