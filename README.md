@@ -9,7 +9,7 @@ A custom view write by swift
 # AutoCycleAdview
 A custom ADView
 ##### :eyes: See also:
-![](http://7xslr9.com1.z0.glb.clouddn.com/2016-6-24-AutoCycleAdviewAutoCycleAdview.gif)
+![](http://7xslr9.com1.z0.glb.clouddn.com/AutoCycleAdview.gif)
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
