@@ -28,7 +28,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'IDCardKeyboard', '~> 1.0.8'
+    pod 'AutoCycleAdview'
 end
 ```
 
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             print(idx)
             print(imageUrls[idx])
             self.showImage!.kf_setImageWithURL(NSURL(string: imageUrls[idx])!)
-        }
+        }//just a little code 
         edgesForExtendedLayout = .None
         view.addSubview(sycleScroll)
     }
