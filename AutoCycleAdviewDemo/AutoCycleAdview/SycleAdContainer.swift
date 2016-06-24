@@ -101,7 +101,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         leftImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!)
         centerImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!)
         rightImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!)
-        self.adDescsLabel.text = adDescs![abs((currentIdx) % (imageUrls?.count)!)]
+        self.adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
         self.scrollView.contentOffset = CGPointMake(bounds.width, 0)
         if isTimerAuto == false {
             timer?.fireDate = NSDate(timeIntervalSinceNow: interval)
