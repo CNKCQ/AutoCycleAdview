@@ -129,7 +129,6 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
         view.addGestureRecognizer(tapGesture)
         view.userInteractionEnabled = true
-        view.backgroundColor = .randomColor()
         return view
     }
 
