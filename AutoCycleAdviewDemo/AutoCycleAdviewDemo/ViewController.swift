@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         showImage?.contentMode = .ScaleAspectFill
         showImage?.clipsToBounds = true
         view.addSubview(showImage!)
-
         sycleScroll.configAd(imageUrls, descs: adDescs, style: .Right) { (idx) in
             print(idx)
             print(imageUrls[idx])

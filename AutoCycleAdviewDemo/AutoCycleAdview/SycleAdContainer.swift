@@ -59,7 +59,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         addSubview(adDescsLabel)
     }
 
-    public func configAd(urls: [String], descs: [String], style: PageControlShowStyle, response: ResponseClouser) {
+    public func configAd(urls: [String], placeholder: UIImage = UIImage(), descs: [String], style: PageControlShowStyle, response: ResponseClouser) {
         imageUrls = urls
         adDescs = descs
         pageControlShowStyle = style
