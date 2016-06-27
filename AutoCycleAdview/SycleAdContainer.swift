@@ -34,8 +34,10 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
     var timer: NSTimer?
     var showadDescs = true
     var tapResponse: ResponseClouser?
-    
-    
+    var placehoderImage: UIImage?
+
+
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView(frame: bounds)
@@ -58,17 +60,18 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         adDescsLabel.textColor = .whiteColor()
         addSubview(adDescsLabel)
     }
-    
+
     public func configAd(urls: [String], placeholder: UIImage = UIImage(), descs: [String], style: PageControlShowStyle, response: ResponseClouser) {
         imageUrls = urls
         adDescs = descs
         pageControlShowStyle = style
         tapResponse = response
+        placehoderImage = placeholder
         configPageControl(style)
         timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(auto), userInfo: nil, repeats: true)
         isTimerAuto = false
     }
-    
+
     func configPageControl(style: PageControlShowStyle) {
         pageControl.numberOfPages = (imageUrls?.count)!
         let PAGEWIDTH = PAGHEIGHT * CGFloat((imageUrls?.count)!)
@@ -88,7 +91,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         pageControl.currentPageIndicatorTintColor = .whiteColor()
         addSubview(pageControl)
     }
-    
+
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if self.scrollView.contentOffset.x == 0 {
             currentIdx = ((currentIdx - 1) % (imageUrls?.count)!)
@@ -98,9 +101,9 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
             return
         }
         pageControl.currentPage = abs(currentIdx)
-        leftImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!)
-        centerImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!)
-        rightImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!)
+        leftImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        centerImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        rightImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
         self.adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
         self.scrollView.contentOffset = CGPointMake(bounds.width, 0)
         if isTimerAuto == false {
@@ -108,19 +111,19 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         }
         isTimerAuto = false
     }
-    
+
     func auto() {
         scrollView.setContentOffset(CGPoint(x: bounds.width * 2, y: 0), animated: true)
         isTimerAuto = true
         NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(scrollViewDidEndDecelerating(_:)), userInfo: nil, repeats: false)
     }
-    
+
     func tap() {
         if tapResponse != nil {
             tapResponse!(abs(currentIdx))
         }
     }
-    
+
     func imageView(frame: CGRect) -> UIImageView {
         let view = UIImageView(frame: frame)
         view.contentMode = .ScaleAspectFill
@@ -130,13 +133,13 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         view.userInteractionEnabled = true
         return view
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     deinit {
         timer?.invalidate()
     }
-    
+
 }
