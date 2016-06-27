@@ -12,7 +12,7 @@
 		3C2787EA1D1CDBF300AEA27F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787E81D1CDBF300AEA27F /* Main.storyboard */; };
 		3C2787EC1D1CDBF300AEA27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787EB1D1CDBF300AEA27F /* Assets.xcassets */; };
 		3C2787EF1D1CDBF300AEA27F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787ED1D1CDBF300AEA27F /* LaunchScreen.storyboard */; };
-		3C2787F91D1CDC8000AEA27F /* SycleAdContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2787F71D1CDC8000AEA27F /* SycleAdContainer.swift */; };
+		3C6257E41D20C9CC003B4768 /* SycleAdContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6257E31D20C9CC003B4768 /* SycleAdContainer.swift */; };
 		59DF821F55BD3C99E4029F6C /* Pods_AutoCycleAdviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B2D765FA84112CCF95AA0 /* Pods_AutoCycleAdviewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +25,7 @@
 		3C2787EB1D1CDBF300AEA27F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C2787EE1D1CDBF300AEA27F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C2787F01D1CDBF300AEA27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C2787F71D1CDC8000AEA27F /* SycleAdContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SycleAdContainer.swift; sourceTree = "<group>"; };
+		3C6257E31D20C9CC003B4768 /* SycleAdContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SycleAdContainer.swift; sourceTree = "<group>"; };
 		58DDE879DD66F1E2A3BA240F /* Pods-AutoCycleAdviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdviewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdviewDemo/Pods-AutoCycleAdviewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		927B2D765FA84112CCF95AA0 /* Pods_AutoCycleAdviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCycleAdviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -62,7 +62,7 @@
 		3C2787D81D1CDBF300AEA27F = {
 			isa = PBXGroup;
 			children = (
-				3C2787F61D1CDC8000AEA27F /* AutoCycleAdview */,
+				3C6257E21D20C9CC003B4768 /* AutoCycleAdview */,
 				3C2787E31D1CDBF300AEA27F /* AutoCycleAdviewDemo */,
 				3C2787E21D1CDBF300AEA27F /* Products */,
 				37E482A77558EC7C7E1E9BA3 /* Pods */,
@@ -91,12 +91,13 @@
 			path = AutoCycleAdviewDemo;
 			sourceTree = "<group>";
 		};
-		3C2787F61D1CDC8000AEA27F /* AutoCycleAdview */ = {
+		3C6257E21D20C9CC003B4768 /* AutoCycleAdview */ = {
 			isa = PBXGroup;
 			children = (
-				3C2787F71D1CDC8000AEA27F /* SycleAdContainer.swift */,
+				3C6257E31D20C9CC003B4768 /* SycleAdContainer.swift */,
 			);
-			path = AutoCycleAdview;
+			name = AutoCycleAdview;
+			path = ../AutoCycleAdview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +224,7 @@
 			files = (
 				3C2787E71D1CDBF300AEA27F /* ViewController.swift in Sources */,
 				3C2787E51D1CDBF300AEA27F /* AppDelegate.swift in Sources */,
-				3C2787F91D1CDC8000AEA27F /* SycleAdContainer.swift in Sources */,
+				3C6257E41D20C9CC003B4768 /* SycleAdContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
