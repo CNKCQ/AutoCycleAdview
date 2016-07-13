@@ -38,6 +38,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
 
 
 
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         scrollView = UIScrollView(frame: bounds)
@@ -61,7 +62,10 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         addSubview(adDescsLabel)
     }
 
-    public func configAd(urls: [String], placeholder: UIImage = UIImage(), descs: [String], style: PageControlShowStyle, response: ResponseClouser) {
+    public func configAd(urls: [String], placeholder: UIImage = UIImage(), descs: [String] = [String](), style: PageControlShowStyle, response: ResponseClouser) {
+        if descs.count == 0 {
+            adDescsLabel.hidden = true
+        }
         imageUrls = urls
         adDescs = descs
         pageControlShowStyle = style
@@ -104,8 +108,10 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         leftImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
         centerImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
         rightImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
-        self.adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
-        self.scrollView.contentOffset = CGPointMake(bounds.width, 0)
+        if adDescs?.count > 0 {
+            adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
+        }
+        scrollView.contentOffset = CGPointMake(bounds.width, 0)
         if isTimerAuto == false {
             timer?.fireDate = NSDate(timeIntervalSinceNow: interval)
         }

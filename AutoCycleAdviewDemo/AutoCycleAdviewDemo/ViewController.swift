@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         showImage?.contentMode = .ScaleAspectFill
         showImage?.clipsToBounds = true
         view.addSubview(showImage!)
-        sycleScroll.configAd(imageUrls, descs: adDescs, style: .Right) { (idx) in
+        sycleScroll.configAd(imageUrls, style: .Center) { (idx) in
             print(idx)
             print(imageUrls[idx])
             self.showImage!.kf_setImageWithURL(NSURL(string: imageUrls[idx])!)
