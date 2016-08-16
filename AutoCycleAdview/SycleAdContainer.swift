@@ -111,7 +111,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         if adDescs?.count > 0 {
             adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
         }
-        scrollView.contentOffset = CGPointMake(bounds.width, 0)
+        self.scrollView.contentOffset = CGPointMake(bounds.width, 0)
         if isTimerAuto == false {
             timer?.fireDate = NSDate(timeIntervalSinceNow: interval)
         }
