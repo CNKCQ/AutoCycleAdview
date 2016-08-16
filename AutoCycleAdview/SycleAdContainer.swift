@@ -72,6 +72,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         tapResponse = response
         placehoderImage = placeholder
         configPageControl(style)
+        auto()
         timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(auto), userInfo: nil, repeats: true)
         isTimerAuto = false
     }
