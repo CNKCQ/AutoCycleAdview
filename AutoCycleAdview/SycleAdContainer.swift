@@ -8,9 +8,33 @@
 
 import UIKit
 import Kingfisher
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 public enum PageControlShowStyle {
-    case None, Left, Center, Right
+    case none, left, center, right
 }
 
 public typealias ResponseClouser = (Int) -> ()
@@ -20,18 +44,18 @@ let interval = Double(3)
 let PAGHEIGHT = CGFloat(20)
 let SA_MARGIN = CGFloat(10)
 
-public class SycleAdContainer: UIView, UIScrollViewDelegate {
+open class SycleAdContainer: UIView, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var imageUrls: [String]?
     var adDescs: [String]?
-    var pageControlShowStyle = PageControlShowStyle.Center
+    var pageControlShowStyle = PageControlShowStyle.center
     var pageControl = UIPageControl()
     let adDescsLabel = UILabel()
     var leftImageView: UIImageView!
     var rightImageView: UIImageView!
     var centerImageView: UIImageView!
     var isTimerAuto = false
-    var timer: NSTimer?
+    var timer: Timer?
     var showadDescs = true
     var tapResponse: ResponseClouser?
     var placehoderImage: UIImage?
@@ -43,7 +67,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         super.init(frame: frame)
         scrollView = UIScrollView(frame: bounds)
         scrollView.bounces = false
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.contentOffset = CGPoint(x: bounds.width, y: 0)
         scrollView.contentSize = CGSize(width: bounds.width * 3, height: 0)
         scrollView.showsHorizontalScrollIndicator = false
@@ -56,15 +80,15 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         scrollView.addSubview(rightImageView)
         addSubview(scrollView)
         adDescsLabel.frame = CGRect(x: 0, y: bounds.height - bounds.height / 8, width: bounds.width, height: bounds.height / 8)
-        adDescsLabel.backgroundColor = .blackColor()
+        adDescsLabel.backgroundColor = .black
         adDescsLabel.alpha = 0.7
-        adDescsLabel.textColor = .whiteColor()
+        adDescsLabel.textColor = .white
         addSubview(adDescsLabel)
     }
 
-    public func configAd(urls: [String], placeholder: UIImage = UIImage(), descs: [String] = [String](), style: PageControlShowStyle, response: ResponseClouser) {
+    open func configAd(_ urls: [String], placeholder: UIImage = UIImage(), descs: [String] = [String](), style: PageControlShowStyle, response: @escaping ResponseClouser) {
         if descs.count == 0 {
-            adDescsLabel.hidden = true
+            adDescsLabel.isHidden = true
         }
         imageUrls = urls
         adDescs = descs
@@ -73,31 +97,31 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         placehoderImage = placeholder
         configPageControl(style)
         auto()
-        timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: #selector(auto), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(auto), userInfo: nil, repeats: true)
         isTimerAuto = false
     }
 
-    func configPageControl(style: PageControlShowStyle) {
+    func configPageControl(_ style: PageControlShowStyle) {
         pageControl.numberOfPages = (imageUrls?.count)!
         let PAGEWIDTH = PAGHEIGHT * CGFloat((imageUrls?.count)!)
         let PAGEY = bounds.height - PAGHEIGHT
         switch style {
-        case .None:
-            pageControl.hidden = true
-        case .Left:
+        case .none:
+            pageControl.isHidden = true
+        case .left:
             pageControl.frame = CGRect(x: SA_MARGIN, y: PAGEY, width: PAGEWIDTH, height: PAGHEIGHT)
-        case .Center:
+        case .center:
             pageControl.frame = CGRect(x: (bounds.width - PAGEWIDTH) / 2, y: PAGEY, width: PAGEWIDTH, height: PAGHEIGHT)
-        case .Right:
+        case .right:
             pageControl.frame = CGRect(x: bounds.width - SA_MARGIN - PAGEWIDTH, y: PAGEY, width: PAGEWIDTH, height: PAGHEIGHT)
         }
         pageControl.currentPage = 1
-        pageControl.pageIndicatorTintColor = .grayColor()
-        pageControl.currentPageIndicatorTintColor = .whiteColor()
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .white
         addSubview(pageControl)
     }
 
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if self.scrollView.contentOffset.x == 0 {
             currentIdx = ((currentIdx - 1) % (imageUrls?.count)!)
         } else if self.scrollView.contentOffset.x == bounds.width * 2 {
@@ -106,15 +130,15 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
             return
         }
         pageControl.currentPage = abs(currentIdx)
-        leftImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
-        centerImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
-        rightImageView.kf_setImageWithURL(NSURL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!, placeholderImage: placehoderImage, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        leftImageView.kf.setImage(with: URL(string: imageUrls![abs((currentIdx - 1) % (imageUrls?.count)!)])!, placeholder: placehoderImage, options: nil, progressBlock: nil, completionHandler: nil)
+        centerImageView.kf.setImage(with: URL(string: imageUrls![abs((currentIdx) % (imageUrls?.count)!)])!, placeholder: placehoderImage, options: nil, progressBlock: nil, completionHandler: nil)
+        rightImageView.kf.setImage(with: URL(string: imageUrls![abs((currentIdx + 1) % (imageUrls?.count)!)])!, placeholder: placehoderImage, options: nil, progressBlock: nil, completionHandler: nil)
         if adDescs?.count > 0 {
             adDescsLabel.text = "  " + adDescs![abs((currentIdx) % (imageUrls?.count)!)]
         }
-        self.scrollView.contentOffset = CGPointMake(bounds.width, 0)
+        self.scrollView.contentOffset = CGPoint(x: bounds.width, y: 0)
         if isTimerAuto == false {
-            timer?.fireDate = NSDate(timeIntervalSinceNow: interval)
+            timer?.fireDate = Date(timeIntervalSinceNow: interval)
         }
         isTimerAuto = false
     }
@@ -122,7 +146,7 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
     func auto() {
         scrollView.setContentOffset(CGPoint(x: bounds.width * 2, y: 0), animated: true)
         isTimerAuto = true
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(scrollViewDidEndDecelerating(_:)), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(scrollViewDidEndDecelerating(_:)), userInfo: nil, repeats: false)
     }
 
     func tap() {
@@ -131,13 +155,13 @@ public class SycleAdContainer: UIView, UIScrollViewDelegate {
         }
     }
 
-    func imageView(frame: CGRect) -> UIImageView {
+    func imageView(_ frame: CGRect) -> UIImageView {
         let view = UIImageView(frame: frame)
-        view.contentMode = .ScaleAspectFill
+        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
         view.addGestureRecognizer(tapGesture)
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         return view
     }
 
