@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AutoCycleAdview"
-  s.version      = “1.0.1”
+  s.version      = "1.0.2"
   s.summary      = "A custom view of AD."
 
   # This description is used to generate tags and improve search results.
@@ -65,10 +65,10 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "8.4"
+  # s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   # s.osx.deployment_target = '10.9'
   # s.tvos.deployment_target = '9.0'
   # s.watchos.deployment_target = '2.0'
