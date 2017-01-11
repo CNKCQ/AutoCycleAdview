@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AutoCycleAdview"
-  s.version      = "0.0.9"
+  s.version      = "1.0.0"
   s.summary      = "A custom view of AD."
 
   # This description is used to generate tags and improve search results.
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/CNKCQ/AutoCycleAdview.git"
-  s.screenshots  = "http://7xslr9.com1.z0.glb.clouddn.com/AutoCycleAdview.gif"
+  s.screenshots  = "https://camo.githubusercontent.com/7668603c63f41740e4026a1314882f4a2b1a11b1/687474703a2f2f3778736c72392e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f4175746f4379636c654164766965775f646973706c61792e676966"
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -107,9 +107,6 @@ Pod::Spec.new do |s|
 
   # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
-  s.resource_bundles = {
-  'AutoCycleAdview' => ['AutoCycleAdview/Resources/**/*.png']
-}
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
