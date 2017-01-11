@@ -9,23 +9,24 @@
 import UIKit
 import Kingfisher
 
-class AutoCycleAdview: UIView {
+public class AutoCycleAdview: UIView {
     
-    var collectionView: UICollectionView!
-    var itemsCount: Int = 0
-    var interval: Double = 5.0
-    var isAutoScroll: Bool = true
-    var isShowPageControl: Bool = true
-    var isHiddenWhenSinglePage: Bool = true
-    var placeholder: UIImage = UIImage()
-    var backgroundImgView: UIImageView = UIImageView()
-    var timer: Timer!
-    var layout: UICollectionViewFlowLayout!
-    var pageControl: UIPageControl!
-    var callback: ((Int) -> ())?
-    var onlyDisplayText: Bool = false
+    public var interval: Double = 5.0
+    public var isAutoScroll: Bool = true
+    public var isShowPageControl: Bool = true
+    public var isHiddenWhenSinglePage: Bool = true
+    public var placeholder: UIImage = UIImage()
+    public var callback: ((Int) -> ())?
+    public var onlyDisplayText: Bool = false
     
-    var imagUrls: [String] = [] {
+    fileprivate var collectionView: UICollectionView!
+    fileprivate var itemsCount: Int = 0
+    fileprivate var backgroundImgView: UIImageView = UIImageView()
+    fileprivate var timer: Timer!
+    fileprivate var layout: UICollectionViewFlowLayout!
+    fileprivate var pageControl: UIPageControl!
+    
+    public var imagUrls: [String] = [] {
         didSet {
             itemsCount = imagUrls.count * 100
             if imagUrls.count > 1 {
@@ -39,7 +40,7 @@ class AutoCycleAdview: UIView {
         }
     }
     
-    var titles: [String] = [] {
+    public var titles: [String] = [] {
         didSet {
             if onlyDisplayText {
                 imagUrls = titles
@@ -47,18 +48,14 @@ class AutoCycleAdview: UIView {
         }
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .lightGray
         setUpCollectinView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func initialization() {
-        
     }
     
     func setUpCollectinView() {
@@ -89,12 +86,12 @@ class AutoCycleAdview: UIView {
     
     func setAutoScroll() {
         deinitTimer()
-//        if  {
+        if isAutoScroll {
             initTimer()
-//        }
+        }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         layout.itemSize = bounds.size
         collectionView.frame = bounds
@@ -115,6 +112,10 @@ class AutoCycleAdview: UIView {
     func deinitTimer() {
         timer?.invalidate()
         timer = nil
+    }
+    
+    public func preScroll(to: Int) {
+        scroll(to: currentIndex())
     }
     
     func automaticScroll() {
@@ -141,17 +142,30 @@ class AutoCycleAdview: UIView {
         case .vertical:
             index = Int((collectionView.contentOffset.y + layout.itemSize.height * 0.5) / layout.itemSize.height)
         }
-        return index
+        return max(0, index)
+    }
+    
+    override public func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview != nil {
+            deinitTimer()
+        }
+    }
+    
+    deinit {
+        collectionView.delegate = nil
+        collectionView.dataSource = nil
+        deinitTimer()
     }
 }
 
 extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsCount
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AdCell
         let idx = index(with: indexPath.row)
         let uri = imagUrls[idx]
@@ -165,27 +179,27 @@ extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource 
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         callback?(index(with: indexPath.row))
     }
 }
 
 extension AutoCycleAdview: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard !imagUrls.isEmpty else {return}
         pageControl.currentPage = index(with: currentIndex())
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         deinitTimer()
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         initTimer()
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard !imagUrls.isEmpty else {return}
     }
 }
