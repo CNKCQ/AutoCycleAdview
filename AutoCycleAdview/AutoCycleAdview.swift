@@ -23,6 +23,7 @@ class AutoCycleAdview: UIView {
     var layout: UICollectionViewFlowLayout!
     var pageControl: UIPageControl!
     var callback: ((Int) -> ())?
+    var onlyDisplayText: Bool = false
     
     var imagUrls: [String] = [] {
         didSet {
@@ -35,6 +36,14 @@ class AutoCycleAdview: UIView {
             }
             setUpPageControl()
             collectionView.reloadData()
+        }
+    }
+    
+    var titles: [String] = [] {
+        didSet {
+            if onlyDisplayText {
+                imagUrls = titles
+            }
         }
     }
 
@@ -145,10 +154,14 @@ extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AdCell
         let idx = index(with: indexPath.row)
-        let url = imagUrls[idx]
+        let uri = imagUrls[idx]
         cell.imageView.contentMode = .scaleAspectFill
-        cell.title = "你好， 我来了看看这个👀"
-        cell.imageView.kf.setImage(with: URL(string: url)!, placeholder: placeholder, options: nil, progressBlock: nil, completionHandler: nil)
+        if onlyDisplayText {
+            cell.title = titles[idx]
+        } else if let url = URL(string: uri), url.scheme!.contains("http") {
+            cell.imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil, completionHandler: nil)
+            cell.title = titles[idx]
+        }
         return cell
     }
     
