@@ -12,7 +12,6 @@ class AdCell: UICollectionViewCell {
     
     var imageView: UIImageView!
     var titleLabel: UILabel!
-    var hasConfigured: Bool = false
     var onlyDisplayText: Bool = false
     var titleAlignment = NSTextAlignment.left {
         didSet {
@@ -24,9 +23,9 @@ class AdCell: UICollectionViewCell {
         didSet {
             switch titleAlignment {
             case .left:
-                titleLabel.text = "    " + title
+                titleLabel.text = "\t" + title
             case .right:
-                titleLabel.text = title + "    "
+                titleLabel.text = title + "\t"
             default:
                 titleLabel.text = title
             }
@@ -65,7 +64,7 @@ class AdCell: UICollectionViewCell {
         initTilteLabel()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -81,7 +80,7 @@ class AdCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         if onlyDisplayText {
             titleLabel.frame = contentView.bounds

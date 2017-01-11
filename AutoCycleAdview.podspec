@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "AutoCycleAdview"
-  s.version      = "1.0.0"
+  s.version      = “1.0.1”
   s.summary      = "A custom view of AD."
 
   # This description is used to generate tags and improve search results.

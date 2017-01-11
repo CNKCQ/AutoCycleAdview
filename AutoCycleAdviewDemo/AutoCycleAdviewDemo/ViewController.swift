@@ -19,8 +19,14 @@ class ViewController: UIViewController {
             "http://ww4.sinaimg.cn/mw690/9844520fjw1f4fqribdg1j21911w0kjn.jpg"]
         let adDescs = ["I was angry friende", "Itold my wrath,my wrath did end.", "I was angry with my foe:", "Itold it not,my wrath did grow ", "And I watered it in fears"]
         let ad = AutoCycleAdview(frame: CGRect(x: 0, y: 100 + 10, width: view.frame.width, height: 240))
+        ad.pageControlAlignment = .right
         ad.imagUrls = imageUrls
+        ad.isShowTitle = true
+        ad.titleAlignment = .left
+        ad.pageControlTinColor = .blue
+        ad.currentTinColor = .red
         ad.titles = adDescs
+
         ad.callback = {
             print("🌹", adDescs[$0])
         }

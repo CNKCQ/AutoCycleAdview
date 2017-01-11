@@ -9,6 +9,10 @@
 import UIKit
 import Kingfisher
 
+public enum PageControlAlignment {
+    case left, center, right
+}
+
 public class AutoCycleAdview: UIView {
     
     public var interval: Double = 5.0
@@ -17,7 +21,15 @@ public class AutoCycleAdview: UIView {
     public var isHiddenWhenSinglePage: Bool = true
     public var placeholder: UIImage = UIImage()
     public var callback: ((Int) -> ())?
+    public var pageControlAlignment = PageControlAlignment.right
+    public var isShowTitle: Bool = true
     public var onlyDisplayText: Bool = false
+    public var titleAlignment = NSTextAlignment.left
+    public var titleColor: UIColor = .white
+    public var titlebgColor = UIColor.black.withAlphaComponent(0.4)
+    public var titleFont: UIFont = UIFont.systemFont(ofSize: UIFont.labelFontSize)
+    public var titleHeight: CGFloat = 25
+    public var imgContentMode: UIViewContentMode = .scaleAspectFill
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var itemsCount: Int = 0
@@ -26,6 +38,18 @@ public class AutoCycleAdview: UIView {
     fileprivate var layout: UICollectionViewFlowLayout!
     fileprivate var pageControl: UIPageControl!
     
+    public var pageControlTinColor: UIColor = .lightGray {
+        didSet {
+            pageControl.pageIndicatorTintColor = pageControlTinColor
+        }
+    }
+    
+    public var currentTinColor: UIColor = .white {
+        didSet {
+            pageControl.currentPageIndicatorTintColor = currentTinColor
+        }
+    }
+
     public var imagUrls: [String] = [] {
         didSet {
             itemsCount = imagUrls.count * 5000
@@ -76,8 +100,8 @@ public class AutoCycleAdview: UIView {
     
     func setUpPageControl() {
         pageControl = UIPageControl()
-        pageControl.currentPageIndicatorTintColor = .white
-        pageControl.pageIndicatorTintColor = .black
+        pageControl.currentPageIndicatorTintColor = currentTinColor
+        pageControl.pageIndicatorTintColor = pageControlTinColor
         pageControl.numberOfPages = imagUrls.count
         pageControl.isUserInteractionEnabled = false
         pageControl.currentPage = index(with: currentIndex())
@@ -99,8 +123,16 @@ public class AutoCycleAdview: UIView {
             collectionView.scrollToItem(at: IndexPath(item: Int(Double(itemsCount) * 0.5), section: 0), at: .centeredHorizontally, animated: true)
         }
         let size = CGSize(width: Double(imagUrls.count * 5) * 1.5, height: 5)
-        let x = bounds.width - size.width - 10 - 20
+        var x = bounds.width - size.width
         let y = bounds.height - size.height - 10
+        switch pageControlAlignment {
+        case .left:
+            x = 30
+        case .center:
+            x = (bounds.width - size.width) / 2
+        case .right:
+            x = bounds.width - size.width - 10 - 20
+        }
         pageControl.frame = CGRect(origin: CGPoint(x: x, y: y), size: size)
     }
     
@@ -162,7 +194,14 @@ extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AdCell
         let idx = index(with: indexPath.row)
         let uri = imagUrls[idx]
-        cell.imageView.contentMode = .scaleAspectFill
+        cell.titleLabel.isHidden = !isShowTitle
+        cell.onlyDisplayText = onlyDisplayText
+        cell.titleColor = titleColor
+        cell.titlebgColor = titlebgColor
+        cell.titleHeight = titleHeight
+        cell.titleAlignment = titleAlignment
+        cell.titleFont = titleFont
+        cell.imageView.contentMode = imgContentMode
         if onlyDisplayText {
             cell.title = titles[idx]
         } else if let url = URL(string: uri), url.scheme!.contains("http") {
