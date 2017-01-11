@@ -12,10 +12,39 @@
 		3C2787EA1D1CDBF300AEA27F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787E81D1CDBF300AEA27F /* Main.storyboard */; };
 		3C2787EC1D1CDBF300AEA27F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787EB1D1CDBF300AEA27F /* Assets.xcassets */; };
 		3C2787EF1D1CDBF300AEA27F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C2787ED1D1CDBF300AEA27F /* LaunchScreen.storyboard */; };
-		3C6C1B2E1E25BD320015C8E8 /* AutoCycleAdview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B2D1E25BD320015C8E8 /* AutoCycleAdview.swift */; };
-		3C6C1B3A1E25E17F0015C8E8 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B391E25E17F0015C8E8 /* AdCell.swift */; };
+		3C6C1B451E26118E0015C8E8 /* AutoCycleAdView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C6C1B431E26118E0015C8E8 /* AutoCycleAdView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C6C1B481E26118E0015C8E8 /* AutoCycleAdView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6C1B411E26118E0015C8E8 /* AutoCycleAdView.framework */; };
+		3C6C1B491E26118E0015C8E8 /* AutoCycleAdView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6C1B411E26118E0015C8E8 /* AutoCycleAdView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3C6C1B501E2611D80015C8E8 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4E1E2611D80015C8E8 /* AdCell.swift */; };
+		3C6C1B511E2611D80015C8E8 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4E1E2611D80015C8E8 /* AdCell.swift */; };
+		3C6C1B521E2611D80015C8E8 /* AutoCycleAdview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */; };
+		3C6C1B531E2611D90015C8E8 /* AutoCycleAdview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */; };
 		59DF821F55BD3C99E4029F6C /* Pods_AutoCycleAdviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B2D765FA84112CCF95AA0 /* Pods_AutoCycleAdviewDemo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C6C1B461E26118E0015C8E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C2787D91D1CDBF300AEA27F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C6C1B401E26118E0015C8E8;
+			remoteInfo = AutoCycleAdView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C6C1B4D1E26118E0015C8E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3C6C1B491E26118E0015C8E8 /* AutoCycleAdView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		141CDA6E90C9597553CADACB /* Pods-AutoCycleAdviewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdviewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdviewDemo/Pods-AutoCycleAdviewDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -26,8 +55,11 @@
 		3C2787EB1D1CDBF300AEA27F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C2787EE1D1CDBF300AEA27F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C2787F01D1CDBF300AEA27F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C6C1B2D1E25BD320015C8E8 /* AutoCycleAdview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCycleAdview.swift; sourceTree = "<group>"; };
-		3C6C1B391E25E17F0015C8E8 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		3C6C1B411E26118E0015C8E8 /* AutoCycleAdView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AutoCycleAdView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C6C1B431E26118E0015C8E8 /* AutoCycleAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCycleAdView.h; sourceTree = "<group>"; };
+		3C6C1B441E26118E0015C8E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C6C1B4E1E2611D80015C8E8 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCycleAdview.swift; sourceTree = "<group>"; };
 		58DDE879DD66F1E2A3BA240F /* Pods-AutoCycleAdviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdviewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdviewDemo/Pods-AutoCycleAdviewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		927B2D765FA84112CCF95AA0 /* Pods_AutoCycleAdviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCycleAdviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -37,7 +69,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C6C1B481E26118E0015C8E8 /* AutoCycleAdView.framework in Frameworks */,
 				59DF821F55BD3C99E4029F6C /* Pods_AutoCycleAdviewDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C6C1B3D1E26118E0015C8E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,8 +104,9 @@
 		3C2787D81D1CDBF300AEA27F = {
 			isa = PBXGroup;
 			children = (
-				3C6257E21D20C9CC003B4768 /* AutoCycleAdview */,
+				3C6257E21D20C9CC003B4768 /* AutoCycleAdView */,
 				3C2787E31D1CDBF300AEA27F /* AutoCycleAdviewDemo */,
+				3C6C1B421E26118E0015C8E8 /* AutoCycleAdView */,
 				3C2787E21D1CDBF300AEA27F /* Products */,
 				37E482A77558EC7C7E1E9BA3 /* Pods */,
 				36831EB76D496888569DBAF1 /* Frameworks */,
@@ -76,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				3C2787E11D1CDBF300AEA27F /* AutoCycleAdviewDemo.app */,
+				3C6C1B411E26118E0015C8E8 /* AutoCycleAdView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,17 +135,37 @@
 			path = AutoCycleAdviewDemo;
 			sourceTree = "<group>";
 		};
-		3C6257E21D20C9CC003B4768 /* AutoCycleAdview */ = {
+		3C6257E21D20C9CC003B4768 /* AutoCycleAdView */ = {
 			isa = PBXGroup;
 			children = (
-				3C6C1B2D1E25BD320015C8E8 /* AutoCycleAdview.swift */,
-				3C6C1B391E25E17F0015C8E8 /* AdCell.swift */,
+				3C6C1B4E1E2611D80015C8E8 /* AdCell.swift */,
+				3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */,
 			);
-			name = AutoCycleAdview;
+			name = AutoCycleAdView;
 			path = ../AutoCycleAdview;
 			sourceTree = "<group>";
 		};
+		3C6C1B421E26118E0015C8E8 /* AutoCycleAdView */ = {
+			isa = PBXGroup;
+			children = (
+				3C6C1B431E26118E0015C8E8 /* AutoCycleAdView.h */,
+				3C6C1B441E26118E0015C8E8 /* Info.plist */,
+			);
+			path = AutoCycleAdView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3C6C1B3E1E26118E0015C8E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C6C1B451E26118E0015C8E8 /* AutoCycleAdView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		3C2787E01D1CDBF300AEA27F /* AutoCycleAdviewDemo */ = {
@@ -116,15 +178,35 @@
 				3C2787DF1D1CDBF300AEA27F /* Resources */,
 				4D687C8DC10784D4767B63BE /* [CP] Embed Pods Frameworks */,
 				FDE2C3B81EA8093419C3C4C5 /* [CP] Copy Pods Resources */,
+				3C6C1B4D1E26118E0015C8E8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C6C1B471E26118E0015C8E8 /* PBXTargetDependency */,
 			);
 			name = AutoCycleAdviewDemo;
 			productName = AutoCycleAdviewDemo;
 			productReference = 3C2787E11D1CDBF300AEA27F /* AutoCycleAdviewDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3C6C1B401E26118E0015C8E8 /* AutoCycleAdView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C6C1B4A1E26118E0015C8E8 /* Build configuration list for PBXNativeTarget "AutoCycleAdView" */;
+			buildPhases = (
+				3C6C1B3C1E26118E0015C8E8 /* Sources */,
+				3C6C1B3D1E26118E0015C8E8 /* Frameworks */,
+				3C6C1B3E1E26118E0015C8E8 /* Headers */,
+				3C6C1B3F1E26118E0015C8E8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoCycleAdView;
+			productName = AutoCycleAdView;
+			productReference = 3C6C1B411E26118E0015C8E8 /* AutoCycleAdView.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -139,6 +221,11 @@
 					3C2787E01D1CDBF300AEA27F = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0820;
+					};
+					3C6C1B401E26118E0015C8E8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -156,6 +243,7 @@
 			projectRoot = "";
 			targets = (
 				3C2787E01D1CDBF300AEA27F /* AutoCycleAdviewDemo */,
+				3C6C1B401E26118E0015C8E8 /* AutoCycleAdView */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +256,13 @@
 				3C2787EF1D1CDBF300AEA27F /* LaunchScreen.storyboard in Resources */,
 				3C2787EC1D1CDBF300AEA27F /* Assets.xcassets in Resources */,
 				3C2787EA1D1CDBF300AEA27F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C6C1B3F1E26118E0015C8E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,14 +321,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C6C1B3A1E25E17F0015C8E8 /* AdCell.swift in Sources */,
+				3C6C1B501E2611D80015C8E8 /* AdCell.swift in Sources */,
+				3C6C1B521E2611D80015C8E8 /* AutoCycleAdview.swift in Sources */,
 				3C2787E71D1CDBF300AEA27F /* ViewController.swift in Sources */,
-				3C6C1B2E1E25BD320015C8E8 /* AutoCycleAdview.swift in Sources */,
 				3C2787E51D1CDBF300AEA27F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3C6C1B3C1E26118E0015C8E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C6C1B511E2611D80015C8E8 /* AdCell.swift in Sources */,
+				3C6C1B531E2611D90015C8E8 /* AutoCycleAdview.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C6C1B471E26118E0015C8E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C6C1B401E26118E0015C8E8 /* AutoCycleAdView */;
+			targetProxy = 3C6C1B461E26118E0015C8E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3C2787E81D1CDBF300AEA27F /* Main.storyboard */ = {
@@ -344,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 141CDA6E90C9597553CADACB /* Pods-AutoCycleAdviewDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AutoCycleAdviewDemo/Info.plist;
@@ -360,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58DDE879DD66F1E2A3BA240F /* Pods-AutoCycleAdviewDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AutoCycleAdviewDemo/Info.plist;
@@ -368,6 +482,61 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		3C6C1B4B1E26118E0015C8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AutoCycleAdView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.AutoCycleAdView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3C6C1B4C1E26118E0015C8E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AutoCycleAdView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.AutoCycleAdView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -391,6 +560,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3C6C1B4A1E26118E0015C8E8 /* Build configuration list for PBXNativeTarget "AutoCycleAdView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C6C1B4B1E26118E0015C8E8 /* Debug */,
+				3C6C1B4C1E26118E0015C8E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

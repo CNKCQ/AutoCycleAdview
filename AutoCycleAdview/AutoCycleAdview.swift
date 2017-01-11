@@ -28,7 +28,7 @@ public class AutoCycleAdview: UIView {
     
     public var imagUrls: [String] = [] {
         didSet {
-            itemsCount = imagUrls.count * 100
+            itemsCount = imagUrls.count * 5000
             if imagUrls.count > 1 {
                 collectionView.isScrollEnabled = true
                 setAutoScroll()
