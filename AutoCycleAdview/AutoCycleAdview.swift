@@ -76,7 +76,7 @@ public class AutoCycleAdview: UIView {
     
     func setUpPageControl() {
         pageControl = UIPageControl()
-        pageControl.currentPageIndicatorTintColor = .red
+        pageControl.currentPageIndicatorTintColor = .white
         pageControl.pageIndicatorTintColor = .black
         pageControl.numberOfPages = imagUrls.count
         pageControl.isUserInteractionEnabled = false
@@ -144,14 +144,7 @@ public class AutoCycleAdview: UIView {
         }
         return max(0, index)
     }
-    
-    override public func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-        if newSuperview != nil {
-            deinitTimer()
-        }
-    }
-    
+
     deinit {
         collectionView.delegate = nil
         collectionView.dataSource = nil

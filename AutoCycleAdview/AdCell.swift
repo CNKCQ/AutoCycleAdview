@@ -14,22 +14,34 @@ class AdCell: UICollectionViewCell {
     var titleLabel: UILabel!
     var hasConfigured: Bool = false
     var onlyDisplayText: Bool = false
+    var titleAlignment = NSTextAlignment.left {
+        didSet {
+            titleLabel.textAlignment = titleAlignment
+        }
+    }
 
     var title: String = "" {
         didSet {
-            titleLabel.text = title
+            switch titleAlignment {
+            case .left:
+                titleLabel.text = "    " + title
+            case .right:
+                titleLabel.text = title + "    "
+            default:
+                titleLabel.text = title
+            }
         }
     }
     
-    var titleColor: UIColor = .black {
+    var titleColor: UIColor = .white {
         didSet {
             titleLabel.textColor = titleColor
         }
     }
     
-    var titlebgColor: UIColor = .lightGray {
+    var titlebgColor = UIColor.black.withAlphaComponent(0.4) {
         didSet {
-           titleLabel.backgroundColor = titlebgColor
+            titleLabel.backgroundColor = titlebgColor
         }
     }
     
@@ -76,7 +88,6 @@ class AdCell: UICollectionViewCell {
         } else {
             imageView.frame = contentView.bounds
             titleLabel.frame = CGRect(origin: CGPoint(x: 0, y: contentView.bounds.height - titleHeight), size: CGSize(width: contentView.bounds.width, height: titleHeight))
-            print(titleLabel.frame, "🐂")
         }
     }
 }
