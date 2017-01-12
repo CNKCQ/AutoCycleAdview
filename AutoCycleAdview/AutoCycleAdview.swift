@@ -163,6 +163,9 @@ public class AutoCycleAdview: UIView {
     }
     
     func index(with current: Int) -> Int {
+        guard !imagUrls.isEmpty else {
+            return 0
+        }
         return current % imagUrls.count
     }
     
@@ -202,11 +205,13 @@ extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource 
         cell.titleAlignment = titleAlignment
         cell.titleFont = titleFont
         cell.imageView.contentMode = imgContentMode
-        if onlyDisplayText {
+        if isShowTitle, onlyDisplayText {
             cell.title = titles[idx]
         } else if let url = URL(string: uri), url.scheme!.contains("http") {
             cell.imageView.kf.setImage(with: url, placeholder: placeholder, options: nil, progressBlock: nil, completionHandler: nil)
-            cell.title = titles[idx]
+            if isShowTitle {
+                cell.title = titles[idx]
+            }
         }
         return cell
     }

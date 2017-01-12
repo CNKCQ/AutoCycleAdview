@@ -70,6 +70,7 @@ class AdCell: UICollectionViewCell {
     
     func initImageView() {
         imageView = UIImageView()
+        imageView.clipsToBounds = true
         contentView.addSubview(imageView)
     }
     
