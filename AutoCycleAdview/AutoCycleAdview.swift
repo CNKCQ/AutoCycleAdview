@@ -91,10 +91,10 @@ public class AutoCycleAdview: UIView {
         collectionView.isPagingEnabled = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.scrollsToTop = false
         collectionView.register(AdCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.scrollsToTop = false
         addSubview(collectionView)
     }
     
@@ -120,7 +120,7 @@ public class AutoCycleAdview: UIView {
         layout.itemSize = bounds.size
         collectionView.frame = bounds
         if collectionView.contentOffset.x == 0, itemsCount > 0 {
-            collectionView.scrollToItem(at: IndexPath(item: Int(Double(itemsCount) * 0.5), section: 0), at: .centeredHorizontally, animated: true)
+            collectionView.scrollToItem(at: IndexPath(item: Int(Double(itemsCount) * 0.5), section: 0), at: [], animated: false)
         }
         let size = CGSize(width: Double(imagUrls.count * 5) * 1.5, height: 5)
         var x = bounds.width - size.width
