@@ -14,13 +14,13 @@ public enum PageControlAlignment {
 }
 
 public class AutoCycleAdview: UIView {
-    
+
     public var interval: Double = 5.0
     public var isAutoScroll: Bool = true
     public var isShowPageControl: Bool = true
     public var isHiddenWhenSinglePage: Bool = true
     public var placeholder: UIImage = UIImage()
-    public var callback: ((Int) -> ())?
+    public var callback: ((Int) -> Void)?
     public var pageControlAlignment = PageControlAlignment.right
     public var isShowTitle: Bool = true
     public var onlyDisplayText: Bool = false
@@ -30,20 +30,20 @@ public class AutoCycleAdview: UIView {
     public var titleFont: UIFont = UIFont.systemFont(ofSize: UIFont.labelFontSize)
     public var titleHeight: CGFloat = 25
     public var imgContentMode: UIViewContentMode = .scaleAspectFill
-    
+
     fileprivate var collectionView: UICollectionView!
     fileprivate var itemsCount: Int = 0
     fileprivate var backgroundImgView: UIImageView = UIImageView()
     fileprivate var timer: Timer!
     fileprivate var layout: UICollectionViewFlowLayout!
     fileprivate var pageControl: UIPageControl!
-    
+
     public var pageControlTinColor: UIColor = .lightGray {
         didSet {
             pageControl.pageIndicatorTintColor = pageControlTinColor
         }
     }
-    
+
     public var currentTinColor: UIColor = .white {
         didSet {
             pageControl.currentPageIndicatorTintColor = currentTinColor
@@ -63,7 +63,7 @@ public class AutoCycleAdview: UIView {
             collectionView.reloadData()
         }
     }
-    
+
     public var titles: [String] = [] {
         didSet {
             if onlyDisplayText {
@@ -72,16 +72,16 @@ public class AutoCycleAdview: UIView {
         }
     }
 
-    override public init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .lightGray
         setUpCollectinView()
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
+
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setUpCollectinView() {
         layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -97,7 +97,7 @@ public class AutoCycleAdview: UIView {
         collectionView.scrollsToTop = false
         addSubview(collectionView)
     }
-    
+
     func setUpPageControl() {
         pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = currentTinColor
@@ -107,15 +107,15 @@ public class AutoCycleAdview: UIView {
         pageControl.currentPage = index(with: currentIndex())
         addSubview(pageControl)
     }
-    
+
     func setAutoScroll() {
         deinitTimer()
         if isAutoScroll {
             initTimer()
         }
     }
-    
-    override public func layoutSubviews() {
+
+    public override func layoutSubviews() {
         super.layoutSubviews()
         layout.itemSize = bounds.size
         collectionView.frame = bounds
@@ -135,25 +135,25 @@ public class AutoCycleAdview: UIView {
         }
         pageControl.frame = CGRect(origin: CGPoint(x: x, y: y), size: size)
     }
-    
+
     func initTimer() {
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(automaticScroll), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .commonModes)
     }
-    
+
     func deinitTimer() {
         timer?.invalidate()
         timer = nil
     }
-    
-    public func preScroll(to: Int) {
+
+    public func preScroll(to _: Int) {
         scroll(to: currentIndex())
     }
-    
+
     func automaticScroll() {
         scroll(to: currentIndex() + 1)
     }
-    
+
     func scroll(to index: Int) {
         if index > itemsCount {
             collectionView.scrollToItem(at: IndexPath(item: Int(Double(itemsCount) * 0.5), section: 0), at: .centeredHorizontally, animated: true)
@@ -161,14 +161,14 @@ public class AutoCycleAdview: UIView {
         }
         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
     }
-    
+
     func index(with current: Int) -> Int {
         guard !imagUrls.isEmpty else {
             return 0
         }
         return current % imagUrls.count
     }
-    
+
     func currentIndex() -> Int {
         var index = 0
         switch layout.scrollDirection {
@@ -188,11 +188,11 @@ public class AutoCycleAdview: UIView {
 }
 
 extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    public func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return itemsCount
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AdCell
         let idx = index(with: indexPath.row)
@@ -215,28 +215,28 @@ extension AutoCycleAdview: UICollectionViewDelegate, UICollectionViewDataSource 
         }
         return cell
     }
-    
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    public func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         callback?(index(with: indexPath.row))
     }
 }
 
 extension AutoCycleAdview: UIScrollViewDelegate {
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !imagUrls.isEmpty else {return}
+
+    public func scrollViewDidScroll(_: UIScrollView) {
+        guard !imagUrls.isEmpty else { return }
         pageControl.currentPage = index(with: currentIndex())
     }
-    
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+    public func scrollViewWillBeginDragging(_: UIScrollView) {
         deinitTimer()
     }
-    
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+    public func scrollViewDidEndDragging(_: UIScrollView, willDecelerate _: Bool) {
         initTimer()
     }
-    
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard !imagUrls.isEmpty else {return}
+
+    public func scrollViewDidEndDecelerating(_: UIScrollView) {
+        guard !imagUrls.isEmpty else { return }
     }
 }
