@@ -150,7 +150,7 @@ public class AutoCycleAdview: UIView {
         scroll(to: currentIndex())
     }
 
-    func automaticScroll() {
+    @objc func automaticScroll() {
         scroll(to: currentIndex() + 1)
     }
 
