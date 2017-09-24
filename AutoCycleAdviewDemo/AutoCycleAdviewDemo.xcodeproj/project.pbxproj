@@ -20,6 +20,7 @@
 		3C6C1B521E2611D80015C8E8 /* AutoCycleAdview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */; };
 		3C6C1B531E2611D90015C8E8 /* AutoCycleAdview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */; };
 		855367B1E372A01E1DF0F66B /* Pods_AutoCycleAdView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A891C8E88A16F9D14B30794 /* Pods_AutoCycleAdView.framework */; };
+		AA6285931F775B6C000F1603 /* AutoCycleAdview.podspec in Resources */ = {isa = PBXBuildFile; fileRef = AA6285921F775B6C000F1603 /* AutoCycleAdview.podspec */; };
 		CC3EACEAE856BC338DAA29A6 /* Pods_AutoCycleAdviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9427FE76A870A6579C80278B /* Pods_AutoCycleAdviewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		3C6C1B4E1E2611D80015C8E8 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		3C6C1B4F1E2611D80015C8E8 /* AutoCycleAdview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCycleAdview.swift; sourceTree = "<group>"; };
 		9427FE76A870A6579C80278B /* Pods_AutoCycleAdviewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCycleAdviewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6285921F775B6C000F1603 /* AutoCycleAdview.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoCycleAdview.podspec; path = ../AutoCycleAdview.podspec; sourceTree = "<group>"; };
 		B6AE46E28DA67457239AA7A9 /* Pods-AutoCycleAdviewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdviewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdviewDemo/Pods-AutoCycleAdviewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		C9C2D96A5C7BC3A2B24F22ED /* Pods-AutoCycleAdView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdView/Pods-AutoCycleAdView.debug.xcconfig"; sourceTree = "<group>"; };
 		DB14B719E428E704C11AB632 /* Pods-AutoCycleAdView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCycleAdView.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoCycleAdView/Pods-AutoCycleAdView.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		3C2787D81D1CDBF300AEA27F = {
 			isa = PBXGroup;
 			children = (
+				AA6285921F775B6C000F1603 /* AutoCycleAdview.podspec */,
 				3C6257E21D20C9CC003B4768 /* AutoCycleAdView */,
 				3C2787E31D1CDBF300AEA27F /* AutoCycleAdviewDemo */,
 				3C6C1B421E26118E0015C8E8 /* AutoCycleAdView */,
@@ -264,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6285931F775B6C000F1603 /* AutoCycleAdview.podspec in Resources */,
 				3C2787EF1D1CDBF300AEA27F /* LaunchScreen.storyboard in Resources */,
 				3C2787EC1D1CDBF300AEA27F /* Assets.xcassets in Resources */,
 				3C2787EA1D1CDBF300AEA27F /* Main.storyboard in Resources */,
@@ -301,13 +305,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutoCycleAdviewDemo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7459A950B28A81807FE5A723 /* [CP] Copy Pods Resources */ = {
@@ -331,13 +338,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AutoCycleAdView-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B4BE245957752B4F88A2884D /* [CP] Embed Pods Frameworks */ = {
@@ -346,9 +356,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AutoCycleAdviewDemo/Pods-AutoCycleAdviewDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -510,7 +523,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -528,7 +541,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KingCQ.AutoCycleAdviewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -555,7 +568,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -583,7 +596,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
