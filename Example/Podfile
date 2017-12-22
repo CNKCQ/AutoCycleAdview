@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AutoCycleAdview_Example' do
+  pod 'AutoCycleAdview', :path => '../'
+
+  target 'AutoCycleAdview_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
