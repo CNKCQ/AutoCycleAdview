@@ -6,6 +6,6 @@ target 'AutoCycleAdview_Example' do
   target 'AutoCycleAdview_Tests' do
     inherit! :search_paths
 
-    
+
   end
 end

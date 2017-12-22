@@ -1,0 +1,6 @@
+framework module AutoCycleAdview {
+  umbrella header "AutoCycleAdview-umbrella.h"
+
+  export *
+  module * { export * }
+}

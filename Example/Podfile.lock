@@ -1,0 +1,20 @@
+PODS:
+  - AutoCycleAdview (1.0.5):
+    - Kingfisher
+  - Kingfisher (4.5.0)
+
+DEPENDENCIES:
+  - AutoCycleAdview (from `../`)
+  - Kingfisher
+
+EXTERNAL SOURCES:
+  AutoCycleAdview:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AutoCycleAdview: a71f24ee88112123f76e670244cc6c59fb3da9a0
+  Kingfisher: 26ae0473102b77b575da51960c932431e3745407
+
+PODFILE CHECKSUM: 07a2166afe98b3ee243193c11b226e4d33e5c38c
+
+COCOAPODS: 1.3.1
